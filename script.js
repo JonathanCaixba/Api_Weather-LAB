@@ -9,6 +9,7 @@ async function fetchWeatherData( latitude, longitude){
     console.log(data.elevation);
     console.log(data.current_weather);
     console.log(data.current_weather.temperature);
+    console.log(data.current_weather.windspeed);
     return data.current_weather;
 }
 // fetchWeatherData( 25.666815, -100.28233);
@@ -19,5 +20,8 @@ async function handleFetchClick(){
     const currentTemperature = document.getElementById("temp-display");
 
     const currentWeather = await fetchWeatherData(latitude, longitude);
-    currentTemperature.textContent = `Temperatura Actual: ${currentWeather.temperature}°C`;
+    currentTemperature.textContent = `Temperatura Actual: ${currentWeather.temperature}`;
+
+    const windSpeed = document.getElementById("wind-display");
+    windSpeed.textContent = `Velocidad del Viento: ${currentWeather.windspeed}`;
 }
